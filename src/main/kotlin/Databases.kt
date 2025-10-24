@@ -1,4 +1,4 @@
-package com.mgl_uhou
+/* package com.mgl_uhou
 
 import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
@@ -53,3 +53,4 @@ fun Application.configureDatabases() {
         }
     }
 }
+*/
