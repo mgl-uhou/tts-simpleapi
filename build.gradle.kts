@@ -36,4 +36,6 @@ dependencies {
     implementation("org.postgresql:postgresql:42.7.3") // Driver JDBC do PostgreSQL
 
     implementation("org.jetbrains.exposed:exposed-java-time:0.61.0")
+
+    implementation(libs.google.cloud.texttospeech)
 }

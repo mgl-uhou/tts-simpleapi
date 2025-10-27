@@ -11,7 +11,7 @@ data class CharacterCounterEntry(val id: Int, val totalChars: Long, val lastUpda
 
 object CharacterCounter : Table("character_counter_tbl") {
     val id = integer("id").autoIncrement()
-    val totalChars = long("used_chars")
+    val usedChars = long("used_chars")
     val lastUpdate = date("last_update")
 
     override val primaryKey = PrimaryKey(id)

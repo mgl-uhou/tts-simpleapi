@@ -9,6 +9,7 @@ fun main(args: Array<String>) {
 
 fun Application.module() {
     configureCORS()
+    install(Tts)
 
     configureSerialization()
     configureDatabase()
