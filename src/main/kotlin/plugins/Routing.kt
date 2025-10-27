@@ -22,7 +22,7 @@ fun Application.configureRouting() {
                 CharacterCounter.selectAll().map {
                     CharacterCounterEntry(
                         id = it[CharacterCounter.id],
-                        totalChars = it[CharacterCounter.totalChars],
+                        totalChars = it[CharacterCounter.usedChars],
                         lastUpdate = it[CharacterCounter.lastUpdate].toString()
                     )
                 }
