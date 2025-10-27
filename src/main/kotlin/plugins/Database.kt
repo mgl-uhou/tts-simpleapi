@@ -1,9 +1,13 @@
 package com.mgl_uhou.plugins
 
 import io.ktor.server.application.Application
+import kotlinx.serialization.Serializable
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.Table
 import org.jetbrains.exposed.sql.javatime.date
+
+@Serializable
+data class CharacterCounterEntry(val id: Int, val totalChars: Long, val lastUpdate: String)
 
 object CharacterCounter : Table("character_counter_tbl") {
     val id = integer("id").autoIncrement()
