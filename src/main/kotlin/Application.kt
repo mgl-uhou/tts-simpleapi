@@ -9,9 +9,9 @@ fun main(args: Array<String>) {
 
 fun Application.module() {
     configureCORS()
-    install(Tts)
+    val services = installDI()
 
     configureSerialization()
     configureDatabase()
-    configureRouting()
+    configureRouting(services.ttsController)
 }

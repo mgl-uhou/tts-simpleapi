@@ -1,17 +1,13 @@
 package com.mgl_uhou.plugins
 
-import com.mgl_uhou.models.TtsRequest
-import io.ktor.http.*
+import com.mgl_uhou.controllers.TtsController
 import io.ktor.server.application.*
-import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
 
-fun Application.configureRouting() {
-    val ttsService = plugin(Tts).service
-
+fun Application.configureRouting(ttsController: TtsController) {
     routing {
         get("/") {
             call.respondText("Hello World!")
@@ -31,16 +27,7 @@ fun Application.configureRouting() {
         }
 
         post("/tts") {
-            try {
-                val request = call.receive<TtsRequest>()
-                val audioBytes = ttsService.synthesizeText(request.text)
-
-                call.response.header(HttpHeaders.ContentDisposition, ContentDisposition.Attachment.withParameter(ContentDisposition.Parameters.FileName, "speech.mp3").toString())
-                call.respondBytes(audioBytes.toByteArray(), ContentType.Audio.MPEG)
-            } catch(e: Exception) {
-                call.application.log.error("Failed to process TTS request", e)
-                call.respond(HttpStatusCode.InternalServerError, "An error occured during text-to-speech conversion.")
-            }
+            ttsController.processAndRespond(call)
         }
     }
 }
