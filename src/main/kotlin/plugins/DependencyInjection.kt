@@ -4,7 +4,6 @@ import com.mgl_uhou.controllers.TtsController
 import com.mgl_uhou.service.CharacterCounterService
 import com.mgl_uhou.service.TtsService
 import io.ktor.server.application.*
-import io.ktor.server.application.hooks.MonitoringEvent
 
 class AppServices(
     val ttsController: TtsController,
@@ -16,7 +15,7 @@ class AppServices(
 }
 
 val DI = createApplicationPlugin(name = "DependencyInjection") {
-    // Este bloco é para configuração, que não temos.
+    // Este bloco é para configuração, que não existe.
     // A lógica de criação vai para o `install` abaixo.
 }
 
