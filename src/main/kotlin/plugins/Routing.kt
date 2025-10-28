@@ -7,7 +7,9 @@ import io.ktor.server.routing.*
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
 
-fun Application.configureRouting(ttsController: TtsController) {
+fun Application.configureRouting() {
+    val ttsController = plugin(DI).ttsController
+
     routing {
         get("/") {
             call.respondText("Hello World!")
